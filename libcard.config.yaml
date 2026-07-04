@@ -42,6 +42,14 @@ socials:
 # --- Your links (the buttons) ---
 # My pinned GitHub repos, in pinned order.
 links:
+  - label: nervous-system-healing
+    url: https://github.com/crs48/nervous-system-healing
+    icon: github
+    star: true
+    stars: build
+  - label: Nervous System Healing (resources)
+    url: https://crs48.github.io/nervous-system-healing
+    icon: heart
   - label: Yinning to Winning (community)
     url: https://ytw.art
     icon: heart
@@ -111,6 +119,14 @@ links:
     stars: build
   - label: floor life explorations
     url: https://crs48.github.io/floor-life
+    icon: globe
+  - label: ai-explained
+    url: https://github.com/crs48/ai-explained
+    icon: github
+    star: true
+    stars: build
+  - label: how ai works for ludites
+    url: https://crs48.github.io/ai-explained
     icon: globe
 # --- Rich content blocks (optional, ordered) ---
 # An ordered list of typed blocks rendered between your links and the social row.
