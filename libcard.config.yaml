@@ -42,11 +42,6 @@ socials:
 # --- Your links (the buttons) ---
 # My pinned GitHub repos, in pinned order.
 links:
-  - label: nervous-system-healing
-    url: https://github.com/crs48/nervous-system-healing
-    icon: github
-    star: true
-    stars: build
   - label: Nervous System Healing (resources)
     url: https://crs48.github.io/nervous-system-healing
     icon: heart
