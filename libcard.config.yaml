@@ -32,6 +32,8 @@ socials:
     url: https://github.com/crs48
   - platform: x
     url: https://x.com/becomingbabyman
+  - platform: bluesky
+    url: https://bsky.app/profile/crs22.bsky.social
   - platform: youtube
     url: https://www.youtube.com/channel/UC3MAaU1oKalapO7rjZps7hQ
   - platform: instagram
