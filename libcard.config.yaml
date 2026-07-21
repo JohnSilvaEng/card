@@ -252,5 +252,5 @@ analytics:
 # base: the sub-path. "/repo-name" for project pages, "/" for a user site or
 #       a custom domain. Getting `base` wrong is the #1 cause of broken assets.
 site:
-  url: https://crs48.github.io
-  base: /LIBCard
+  url: https://crs.land
+  base: /
