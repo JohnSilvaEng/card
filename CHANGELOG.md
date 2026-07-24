@@ -7,6 +7,15 @@ Entries marked **⚠ Action needed** require a one-time change on your side (mos
 often to `libcard.config.yaml`); everything else is picked up automatically by
 `pnpm run update` + a rebuild.
 
+## Unreleased
+
+- **Glass themes no longer flicker.** The frosted panels on Frost, Dusk, Dawn,
+  and Mist could shimmer or flash intermittently — the drifting mesh background
+  ran a live 60px blur and a scale/rotate animation that periodically forced the
+  GPU to redraw the layer the glass sits on. The mesh's softness is now baked
+  into the gradients themselves and the drift is translate-only, so the glass
+  effect looks the same but the flicker is gone. No config changes needed.
+
 ## 0.2.0
 
 - **Rich content blocks & zero-JS embeds.** Cards now carry typed *content

@@ -8,25 +8,48 @@
 
 /* === Pastel-mesh background ============================================ */
 /* A dense, soft mesh: four large radial-gradient washes covering a fixed layer
-   behind everything, then blurred for the dreamy quality. Colors come from the
-   active theme's --lc-mesh-* vars (unset → transparent → just the page color, so
-   it's safe to mount for any theme set). The stage is oversized (inset: -14%) so
-   the blur — and the optional slow drift — never reveal a hard edge. */
+   behind everything. The dreamy softness is BAKED into eased 3-stop gradient
+   falloff — no live `filter: blur()`. Blurring an already-soft radial wash is
+   visually just a slightly-softer wash, and the live 60px blur of this
+   ~128%-viewport layer was the biggest GPU cost feeding the memory-pressure
+   layer thrash that made the frosted panels in front flicker (exploration
+   0010). Colors come from the active theme's --lc-mesh-* vars (unset →
+   transparent → just the page color, so it's safe to mount for any theme set).
+   The stage is oversized (inset: -16%) so the slow drift never reveals a hard
+   edge. */
 .lc-bg-stage {
   position: fixed;
-  inset: -14%;
+  inset: -16%;
   z-index: -2;
   pointer-events: none;
   background-color: var(--lc-bg);
   background-image:
-    radial-gradient(70% 65% at 12% 8%, var(--lc-mesh-1, transparent), transparent 72%),
-    radial-gradient(70% 65% at 88% 12%, var(--lc-mesh-2, transparent), transparent 72%),
-    radial-gradient(75% 70% at 16% 92%, var(--lc-mesh-3, transparent), transparent 72%),
-    radial-gradient(75% 70% at 90% 88%, var(--lc-mesh-4, transparent), transparent 72%);
-  filter: blur(var(--lc-bg-blur, 0px));
-  /* Pin the blurred, drifting mesh to its own stable GPU layer so the glass
-     panels in front of it never re-sample a half-rasterized backdrop — that
-     intermittent re-rasterization is the "flicker over time" on glass themes. */
+    radial-gradient(
+      70% 65% at 12% 8%,
+      var(--lc-mesh-1, transparent) 0%,
+      color-mix(in oklab, var(--lc-mesh-1, transparent) 55%, transparent) 45%,
+      transparent 82%
+    ),
+    radial-gradient(
+      70% 65% at 88% 12%,
+      var(--lc-mesh-2, transparent) 0%,
+      color-mix(in oklab, var(--lc-mesh-2, transparent) 55%, transparent) 45%,
+      transparent 82%
+    ),
+    radial-gradient(
+      75% 70% at 16% 92%,
+      var(--lc-mesh-3, transparent) 0%,
+      color-mix(in oklab, var(--lc-mesh-3, transparent) 55%, transparent) 45%,
+      transparent 82%
+    ),
+    radial-gradient(
+      75% 70% at 90% 88%,
+      var(--lc-mesh-4, transparent) 0%,
+      color-mix(in oklab, var(--lc-mesh-4, transparent) 55%, transparent) 45%,
+      transparent 82%
+    );
+  /* No filter: the layer rasters once, then only composites. Pinning it keeps
+     the glass panels' backdrop-filter sampling a stable, always-valid texture. */
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -36,9 +59,12 @@
     animation: lc-drift 30s ease-in-out infinite alternate;
     animation-play-state: var(--lc-bg-anim, paused);
   }
+  /* Translate-only: never triggers raster-scale management, so the layer's
+     texture is never re-rasterized mid-drift. (The old scale(1.08) rotate(2deg)
+     was the periodic re-raster trigger the panels flickered against.) */
   @keyframes lc-drift {
     to {
-      transform: translate3d(-3%, -2%, 0) scale(1.08) rotate(2deg);
+      transform: translate3d(-3.5%, -2.5%, 0);
     }
   }
 }
@@ -83,18 +109,15 @@
   -webkit-backdrop-filter: var(--lc-glass-filter, none);
   backdrop-filter: var(--lc-glass-filter, none);
 }
-/* Flicker fix: a frosted panel filters its backdrop every frame, and BOTH the
-   hover lift and the drifting mesh behind it make Safari/Chrome tear down and
-   recompute that backdrop-filter layer — which reads as flicker/shimmer (over
-   time, and when the cursor hovers). Pin each frosted panel to its own
-   compositor layer so the layer is reused instead of recreated. Scoped to glass
-   themes via --lc-glass-promote (unset → `auto`, so the flat themes are
-   untouched); `backface-visibility: hidden` is the classic backdrop-filter
-   flicker remedy. Tailwind v4's hover lift uses the `translate` property, so
-   promoting via `will-change: transform` never fights it. */
+/* Flicker guard: `backface-visibility: hidden` is the mild, documented
+   backdrop-filter flicker remedy for the hover-lift case. The earlier blanket
+   `will-change: transform` promotion (one pinned render surface per frosted
+   panel) fed the GPU-memory pressure that caused layer purge/recreate thrash —
+   with the mesh stage now cheap and translate-only (see above), the panels'
+   backdrop is stable and speculative promotion is net harmful (exploration
+   0010). */
 .bg-surface:not(.lc-solid),
 .bg-accent:not(.lc-solid) {
-  will-change: var(--lc-glass-promote, auto);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -105,7 +128,6 @@
   .bg-accent:not(.lc-solid) {
     --lc-glass-pct: 100%;
     --lc-glass-filter: none;
-    --lc-glass-promote: auto;
     --lc-cta-bg: var(--lc-accent);
     --lc-cta-fg: var(--lc-accent-contrast);
     --lc-cta-border: transparent;
@@ -116,7 +138,6 @@
   .bg-accent:not(.lc-solid) {
     --lc-glass-pct: 100%;
     --lc-glass-filter: none;
-    --lc-glass-promote: auto;
     --lc-cta-bg: var(--lc-accent);
     --lc-cta-fg: var(--lc-accent-contrast);
     --lc-cta-border: transparent;
@@ -127,7 +148,6 @@
   .bg-accent:not(.lc-solid) {
     --lc-glass-pct: 100%;
     --lc-glass-filter: none;
-    --lc-glass-promote: auto;
     --lc-cta-bg: var(--lc-accent);
     --lc-cta-fg: var(--lc-accent-contrast);
     --lc-cta-border: transparent;
