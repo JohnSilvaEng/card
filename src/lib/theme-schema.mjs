@@ -94,7 +94,7 @@ export const PATTERN_RECIPES = {
     "  background-size: var(--s) var(--s);",
 };
 
-/** Page background: a flat color (default), or a soft (optionally blurred) pastel mesh. */
+/** Page background: a flat color (default), or a soft pastel mesh. */
 const backgroundSchema = z
   .discriminatedUnion("kind", [
     z.object({ kind: z.literal("solid") }).strict(),
@@ -102,7 +102,18 @@ const backgroundSchema = z
       .object({
         kind: z.literal("pastel-mesh"),
         stops: z.array(color).min(2).max(4), // blob colors
-        blur: z.number().min(0).max(120).default(0), // px of softening on the blobs
+        // Mesh softness. Accepted for compatibility, but no longer rendered as a
+        // live `filter: blur()` — softness is baked into the eased gradient
+        // falloff in effects.css (a live blur made the glass panels flicker;
+        // see exploration 0010).
+        blur: z
+          .number()
+          .min(0)
+          .max(120)
+          .default(0)
+          .describe(
+            "Mesh softness (px). Baked into the gradient falloff at render time — not a live CSS filter.",
+          ),
         animate: z.boolean().default(false), // slow drift (auto-off under reduced motion)
       })
       .strict(),
@@ -259,7 +270,10 @@ export function themeToCss(theme) {
   const bg = theme.background;
   if (bg?.kind === "pastel-mesh") {
     for (let i = 0; i < 4; i++) decls.push(`  --lc-mesh-${i + 1}: ${bg.stops[i % bg.stops.length]};`);
-    decls.push(`  --lc-bg-blur: ${bg.blur}px;`);
+    // `blur` is still accepted (mesh softness) but no longer emitted as a live
+    // `filter: blur()` — the softness is baked into the eased gradient falloff
+    // in effects.css. A live 60px blur on the animated stage was the GPU cost
+    // that made the frosted panels flicker (exploration 0010).
     decls.push(`  --lc-bg-anim: ${bg.animate ? "running" : "paused"};`);
   }
 
@@ -269,10 +283,6 @@ export function themeToCss(theme) {
     const pct = Math.round(theme.buttons.glassFillOpacity * 100);
     decls.push(`  --lc-glass-pct: ${pct}%;`);
     decls.push(`  --lc-glass-filter: blur(12px) saturate(150%);`);
-    // Promote frosted panels to their own compositor layer (effects.css reads
-    // this) so the hover lift and the drifting mesh don't make backdrop-filter
-    // re-snapshot its backdrop and flicker. Only glass themes set it.
-    decls.push(`  --lc-glass-promote: transform;`);
     // Accent CTAs (Save contact, form submits) become frosted glass with the
     // accent as text + ring, so they match the frosted surfaces instead of
     // reading as a flat block of color. Accent-on-glass keeps AA (gate verifies).

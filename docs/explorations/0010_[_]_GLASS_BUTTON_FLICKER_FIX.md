@@ -408,23 +408,23 @@ from the three guard blocks in `effects.css`).
 
 ## Implementation Checklist
 
-- [ ] `effects.css`: remove `filter: blur(var(--lc-bg-blur))` from
+- [x] `effects.css`: remove `filter: blur(var(--lc-bg-blur))` from
       `.lc-bg-stage`; replace the four 2-stop gradients with eased 3-stop
       versions (`color-mix` mid-stop at ~45%, fade-out at ~82%).
-- [ ] `effects.css`: change `lc-drift` keyframes to translate-only
+- [x] `effects.css`: change `lc-drift` keyframes to translate-only
       (`translate3d(-3.5%, -2.5%, 0)`); widen `.lc-bg-stage` overscan to
       `inset: -16%`.
-- [ ] `effects.css`: drop `will-change: var(--lc-glass-promote, auto)` from
+- [x] `effects.css`: drop `will-change: var(--lc-glass-promote, auto)` from
       the panel block (keep `backface-visibility: hidden`); remove
       `--lc-glass-promote` resets from the `@supports` /
       `prefers-reduced-transparency` / `forced-colors` guard blocks.
-- [ ] `theme-schema.mjs`: stop emitting `--lc-bg-blur` and
+- [x] `theme-schema.mjs`: stop emitting `--lc-bg-blur` and
       `--lc-glass-promote` from `themeToCss()` (keep accepting `blur` in the
       schema; note the reinterpretation in a comment).
-- [ ] `pnpm run gen:themes` to regenerate `themes.gen.css` / registry.
-- [ ] `themes/README.md` (generated) + `theme.schema.json` description: note
+- [x] `pnpm run gen:themes` to regenerate `themes.gen.css` / registry.
+- [x] `themes/README.md` (generated) + `theme.schema.json` description: note
       that `blur` now expresses mesh softness baked at authoring time.
-- [ ] `pnpm run check-contrast` (should be untouched — gate is blur-agnostic).
+- [x] `pnpm run check-contrast` (should be untouched — gate is blur-agnostic).
 - [ ] `pnpm run shoot-themes` and eyeball/diff the four atmosphere previews
       against the committed ones.
 - [ ] Commit; if the diff shows fidelity loss, open the Option C follow-up
