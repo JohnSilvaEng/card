@@ -425,36 +425,36 @@ from the three guard blocks in `effects.css`).
 - [x] `themes/README.md` (generated) + `theme.schema.json` description: note
       that `blur` now expresses mesh softness baked at authoring time.
 - [x] `pnpm run check-contrast` (should be untouched — gate is blur-agnostic).
-- [ ] `pnpm run shoot-themes` and eyeball/diff the four atmosphere previews
+- [x] `pnpm run shoot-themes` and eyeball/diff the four atmosphere previews
       against the committed ones.
-- [ ] Commit; if the diff shows fidelity loss, open the Option C follow-up
+- [x] Commit; if the diff shows fidelity loss, open the Option C follow-up
       (bake mesh to pre-blurred AVIF in `gen-themes.mjs`).
 
 ## Validation Checklist
 
-- [ ] **Pixel diff**: `frost`, `mist`, `dawn`, `dusk` previews from
+- [x] **Pixel diff**: `frost`, `mist`, `dawn`, `dusk` previews from
       [`shoot-themes.mjs`](../../scripts/shoot-themes.mjs) are visually
       indistinguishable before/after (no lost softness, no banding —
       especially Dusk's saturated orbs on dark).
-- [ ] **Soak test, Chrome**: load each glass theme, watch ≥ 60s (two full
+- [x] **Soak test, Chrome**: load each glass theme, watch ≥ 60s (two full
       drift half-cycles) with DevTools FPS meter — zero flicker frames, steady
       compositing.
-- [ ] **Soak test, Safari**: same pass (WebKit manages raster scale
+- [x] **Soak test, Safari**: same pass (WebKit manages raster scale
       differently; the translate-only drift must hold there too).
-- [ ] **Hover sweep**: rapidly hover across all link buttons / socials / CTA
+- [x] **Hover sweep**: rapidly hover across all link buttons / socials / CTA
       on each glass theme — no flicker (regression check on commit
       `230e843`'s original symptom, now without blanket `will-change`).
-- [ ] **Scroll test**: a long card (many blocks) scrolled briskly on a glass
+- [x] **Scroll test**: a long card (many blocks) scrolled briskly on a glass
       theme — panels don't shimmer against the fixed stage.
-- [ ] **Layer audit**: DevTools → Layers shows the stage as one layer and *no*
+- [x] **Layer audit**: DevTools → Layers shows the stage as one layer and *no*
       unexpected per-panel pinned layers at rest; GPU memory materially lower
       than before.
-- [ ] **Guards intact**: `prefers-reduced-motion` still pauses drift;
+- [x] **Guards intact**: `prefers-reduced-motion` still pauses drift;
       `prefers-reduced-transparency` / `forced-colors` still go opaque; the
       `@supports` fallback still solidifies the CTA.
-- [ ] **Mobile**: iOS Safari + Android Chrome spot-check (fixed-position
+- [x] **Mobile**: iOS Safari + Android Chrome spot-check (fixed-position
       stage + backdrop-filter on real devices).
-- [ ] `pnpm test`, `pnpm run typecheck`, `pnpm run check-contrast` all green.
+- [x] `pnpm test`, `pnpm run typecheck`, `pnpm run check-contrast` all green.
 
 ## References
 
