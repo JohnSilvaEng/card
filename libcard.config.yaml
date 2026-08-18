@@ -30,6 +30,8 @@ contact:
 socials:
   - platform: github
     url: https://github.com/crs48
+  - platform: linkedin
+    url: https://www.linkedin.com/in/chrissmothers/
   - platform: x
     url: https://x.com/becomingbabyman
   - platform: bluesky
