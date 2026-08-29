@@ -124,6 +124,14 @@ links:
   - label: how ai works for ludites
     url: https://crs48.github.io/ai-explained
     icon: globe
+  - label: courtyardblock
+    url: https://github.com/crs48/courtyardblock
+    icon: github
+    star: true
+    stars: build
+  - label: EU mixed-use courtyard buildings for the US
+    url: https://crs48.github.io/courtyardblock
+    icon: globe
 # --- Rich content blocks (optional, ordered) ---
 # An ordered list of typed blocks rendered between your links and the social row.
 # Every block is validated data — never raw HTML — so it stays safe and simple.
