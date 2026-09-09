@@ -236,6 +236,21 @@ The `stars` modes trade freshness against LibCard's *"nothing to track you"* pro
 
 `star`/`stars` are ignored for non-repo URLs (a profile like `github.com/ada`, or a deep path), so they're safe to leave on. The count always **fails soft** — if the GitHub API is unreachable or rate-limited at build time, the pill simply shows no number and the build still succeeds.
 
+#### A site and its source, on one row
+
+If a link is a live site that has a repo behind it, you don't need two buttons. Add `github:` and the row shows the site as the main button with a compact **GitHub pill** (the GitHub mark + ★ count) to its right that opens the repo:
+
+```yaml
+links:
+  - label: My flocking simulation
+    url: https://ada.github.io/murmuration
+    icon: globe
+    github: https://github.com/ada/murmuration   # a plain owner/repo URL
+    stars: build                                 # same off | build | badge modes
+```
+
+The pill is always shown when `github:` is set (no `star: true` needed), and `stars` controls the count exactly as above. `github` must be a repo URL — the schema rejects profiles and deep paths.
+
 > **Want a live, always-fresh count?** Drop in the official [github-buttons](https://buttons.github.io/) widget — but note it ships third-party JavaScript and an iframe (a script from `buttons.github.io` and a request to `ghbtns.com` on every visit), which opts your page out of LibCard's zero-JS, no-tracker default. It isn't built in for that reason; add it yourself only if you're comfortable with the tradeoff:
 >
 > ```html

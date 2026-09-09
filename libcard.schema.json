@@ -82,6 +82,11 @@
               "icon": {
                 "type": "string"
               },
+              "github": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https?:\\/\\/github\\.com\\/[^/?#]+\\/[^/?#]+?(?:\\.git)?\\/?$"
+              },
               "star": {
                 "type": "boolean",
                 "default": false
