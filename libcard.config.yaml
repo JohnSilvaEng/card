@@ -147,6 +147,7 @@ blocks:
     markdown: >
       I made LIBCard as a free, fast, **zero-JavaScript** link-in-bio page and virtual business
       card you host yourself on GitHub Pages. Edit one file, save, done.
+      Grab the code at [github.com/crs48/LIBCard](https://github.com/crs48/LIBCard).
   - type: faq
     items:
       - q: Is it really free?
