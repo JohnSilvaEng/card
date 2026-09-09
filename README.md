@@ -238,7 +238,7 @@ The `stars` modes trade freshness against LibCard's *"nothing to track you"* pro
 
 #### A site and its source, on one row
 
-If a link is a live site that has a repo behind it, you don't need two buttons. Add `github:` and the row shows the site as the main button with a compact **GitHub pill** (the GitHub mark + ★ count) to its right that opens the repo:
+If a link is a live site that has a repo behind it, you don't need two buttons. Add `github:` and the row shows the site as the main button with a compact **GitHub pill** (the GitHub mark + star count) to its right that opens the repo:
 
 ```yaml
 links:

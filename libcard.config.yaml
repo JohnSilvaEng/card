@@ -46,7 +46,7 @@ socials:
 # --- Your links (the buttons) ---
 # My pinned GitHub repos, in pinned order. A `github:` line pairs a live site
 # with its source: the row shows the site as the main button and a small
-# GitHub pill (mark + ★ count) to its right.
+# GitHub pill (mark + star count) to its right.
 links:
   - label: Nervous System Healing (resources)
     url: https://crs48.github.io/nervous-system-healing

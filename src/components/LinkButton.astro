@@ -14,7 +14,8 @@ const target = external ? "_blank" : undefined;
 
 // Two flavours of sub-pill, rendered to the right of the main button:
 //   • companion — `github:` names a repo that backs this link (a live site and
-//     its source). Shows the GitHub mark + the star count; always on when set.
+//     its source). Shows the GitHub mark + the star count (no ★ glyph — the
+//     mark already says where the number comes from); always on when set.
 //   • star      — the link's own `url` IS the repo and the owner opted in via
 //     `star: true` / a `stars` mode. Shows "★ <count>" and opens the repo.
 const companion = link.github ? parseRepo(link.github) : null;
@@ -59,10 +60,7 @@ const pillLabel = repo
         class="group flex shrink-0 items-center gap-1.5 rounded-card border border-border bg-surface px-3 text-sm font-medium text-muted shadow-sm transition hover:-translate-y-0.5 hover:border-[#e3b341] hover:text-[#e3b341] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {companion ? (
-          <>
-            <Icon name="github" class="size-4 shrink-0 transition-colors" />
-            {(count || badgeSrc) && <Icon name="star" class="size-3.5 shrink-0 transition-colors group-hover:text-[#e3b341]" />}
-          </>
+          <Icon name="github" class="size-4 shrink-0 transition-colors" />
         ) : (
           <Icon name="star" class="size-4 shrink-0 transition-colors group-hover:text-[#e3b341]" />
         )}
