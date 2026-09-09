@@ -12,9 +12,14 @@ const external = /^https?:\/\//i.test(link.url);
 const rel = external ? "noopener noreferrer" : undefined;
 const target = external ? "_blank" : undefined;
 
-// Show the "★ Star" pill when the link points at a GitHub repo and the owner
-// opted in (either `star: true`, or any `stars` mode other than "off").
-const repo = link.star || link.stars !== "off" ? parseRepo(link.url) : null;
+// Two flavours of sub-pill, rendered to the right of the main button:
+//   • companion — `github:` names a repo that backs this link (a live site and
+//     its source). Shows the GitHub mark + the star count; always on when set.
+//   • star      — the link's own `url` IS the repo and the owner opted in via
+//     `star: true` / a `stars` mode. Shows "★ <count>" and opens the repo.
+const companion = link.github ? parseRepo(link.github) : null;
+const repo = companion ?? (link.star || link.stars !== "off" ? parseRepo(link.url) : null);
+const pillHref = companion ? link.github! : link.url;
 
 // Bake the live count into the page at build time (fails soft to no count).
 let count: string | null = null;
@@ -23,6 +28,11 @@ if (repo && link.stars === "build") {
   if (n !== null) count = formatStars(n);
 }
 const badgeSrc = repo && link.stars === "badge" ? shieldsStarsUrl(repo) : null;
+const pillLabel = repo
+  ? companion
+    ? `${repo.owner}/${repo.repo} on GitHub${count ? ` (${count} ${count === "1" ? "star" : "stars"})` : ""}`
+    : `Star ${repo.owner}/${repo.repo} on GitHub`
+  : undefined;
 ---
 <div class="flex w-full items-stretch gap-2">
   <a
@@ -41,13 +51,21 @@ const badgeSrc = repo && link.stars === "badge" ? shieldsStarsUrl(repo) : null;
   {
     repo && (
       <a
-        href={link.url}
+        href={pillHref}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Star ${repo.owner}/${repo.repo} on GitHub`}
+        aria-label={pillLabel}
+        title={companion ? `Source: ${repo.owner}/${repo.repo}` : undefined}
         class="group flex shrink-0 items-center gap-1.5 rounded-card border border-border bg-surface px-3 text-sm font-medium text-muted shadow-sm transition hover:-translate-y-0.5 hover:border-[#e3b341] hover:text-[#e3b341] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
-        <Icon name="star" class="size-4 shrink-0 transition-colors group-hover:text-[#e3b341]" />
+        {companion ? (
+          <>
+            <Icon name="github" class="size-4 shrink-0 transition-colors" />
+            {(count || badgeSrc) && <Icon name="star" class="size-3.5 shrink-0 transition-colors group-hover:text-[#e3b341]" />}
+          </>
+        ) : (
+          <Icon name="star" class="size-4 shrink-0 transition-colors group-hover:text-[#e3b341]" />
+        )}
         {count && <span>{count}</span>}
         {badgeSrc && <img src={badgeSrc} alt="GitHub stars" height="18" loading="lazy" decoding="async" />}
       </a>

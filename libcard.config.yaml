@@ -44,94 +44,69 @@ socials:
     url: https://t.me/becomingbabyman
 
 # --- Your links (the buttons) ---
-# My pinned GitHub repos, in pinned order.
+# My pinned GitHub repos, in pinned order. A `github:` line pairs a live site
+# with its source: the row shows the site as the main button and a small
+# GitHub pill (mark + ★ count) to its right.
 links:
   - label: Nervous System Healing (resources)
     url: https://crs48.github.io/nervous-system-healing
     icon: heart
   - label: xNet
-    url: https://github.com/crs48/xNet
-    icon: github
-    star: true # add a "★ Star" sub-button that opens the repo
-    stars: build # bake the star count in at build time (zero runtime JS)
-  - label: xnet.fyi
     url: https://xnet.fyi/
     icon: globe
+    github: https://github.com/crs48/xNet # show the repo + star count beside the site
+    stars: build # bake the star count in at build time (zero runtime JS)
   - label: xnet.fyi/blog/a-great-pirate-age
     url: https://xnet.fyi/blog/a-great-pirate-age/
     icon: globe
   - label: xnet.fyi/blog/timeout
     url: https://xnet.fyi/blog/timeout/
     icon: heart
-  - label: LIBCard
-    url: https://github.com/crs48/LIBCard
-    icon: github
-    star: true # add a "★ Star" sub-button that opens the repo
-    stars: build # bake the star count in at build time (zero runtime JS)
-  - label: My personal site
+  - label: LIBCard (this site)
     url: https://crs48.github.io/LIBCard
     icon: globe
-  - label: murmuration
-    url: https://github.com/crs48/murmuration
-    icon: github
-    star: true # add a "★ Star" sub-button that opens the repo
-    stars: build # bake the star count in at build time (zero runtime JS)
-  - label: flocking simulation
+    github: https://github.com/crs48/LIBCard
+    stars: build
+  - label: murmuration (flocking)
     url: https://crs48.github.io/murmuration
     icon: globe
-  - label: warp-voyage
-    url: https://github.com/crs48/warp-voyage
-    icon: github
-    star: true
+    github: https://github.com/crs48/murmuration
     stars: build
-  - label: tunnel browser game
+  - label: warp-voyage (tunnel game)
     url: https://crs48.github.io/warp-voyage
     icon: globe
+    github: https://github.com/crs48/warp-voyage
+    stars: build
   - label: cause (Clojure EDN CRDT)
     url: https://github.com/crs48/cause
     icon: github
-    star: true
-    stars: build
-  - label: dome
-    url: https://github.com/crs48/dome
-    icon: github
-    star: true
+    star: true # add a "★ Star" sub-button that opens the repo
     stars: build
   - label: dome home explorations
     url: https://crs48.github.io/dome
     icon: globe
-  - label: food-forests
-    url: https://github.com/crs48/food-forests
-    icon: github
-    star: true
+    github: https://github.com/crs48/dome
     stars: build
   - label: food forest explorations
     url: https://crs48.github.io/food-forests
     icon: globe
-  - label: floor-life
-    url: https://github.com/crs48/floor-life
-    icon: github
-    star: true
+    github: https://github.com/crs48/food-forests
     stars: build
   - label: floor life explorations
     url: https://crs48.github.io/floor-life
     icon: globe
-  - label: ai-explained
-    url: https://github.com/crs48/ai-explained
-    icon: github
-    star: true
+    github: https://github.com/crs48/floor-life
     stars: build
   - label: how ai works for ludites
     url: https://crs48.github.io/ai-explained
     icon: globe
-  - label: courtyardblock
-    url: https://github.com/crs48/courtyardblock
-    icon: github
-    star: true
+    github: https://github.com/crs48/ai-explained
     stars: build
   - label: EU mixed-use courtyard buildings for the US
     url: https://crs48.github.io/courtyardblock
     icon: globe
+    github: https://github.com/crs48/courtyardblock
+    stars: build
 # --- Rich content blocks (optional, ordered) ---
 # An ordered list of typed blocks rendered between your links and the social row.
 # Every block is validated data — never raw HTML — so it stays safe and simple.

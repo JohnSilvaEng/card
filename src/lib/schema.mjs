@@ -53,12 +53,25 @@ const linkSchema = z
     label: z.string().min(1),
     url: z.string().url(),
     icon: z.string().optional(),
-    // Show a "★ Star" sub-button when this link points at a GitHub repo. It
-    // opens the repo (you can't star from another site), so a logged-in
-    // visitor lands right on GitHub's own Star button. Ignored for non-repo
-    // URLs (e.g. a profile or a deep path).
+    // A companion GitHub repo for this link — e.g. the source behind a live
+    // site. Shows a small GitHub pill (the mark + the star count, per `stars`)
+    // to the right of the main button, so one row says "here's the site, and
+    // here's its code" instead of two separate buttons. Must be a plain repo
+    // URL (https://github.com/owner/repo).
+    github: z
+      .string()
+      .url()
+      .regex(/^https?:\/\/github\.com\/[^/?#]+\/[^/?#]+?(?:\.git)?\/?$/i, {
+        message: "github must be a repo URL like https://github.com/owner/repo",
+      })
+      .optional(),
+    // Show a "★ Star" sub-button when this link's own `url` points at a GitHub
+    // repo. It opens the repo (you can't star from another site), so a
+    // logged-in visitor lands right on GitHub's own Star button. Ignored for
+    // non-repo URLs (e.g. a profile or a deep path). Not needed when `github`
+    // is set — that pill shows regardless.
     star: z.boolean().default(false),
-    // How (if at all) to show the star count next to the pill:
+    // How (if at all) to show the star count on the pill (either kind):
     //   "off"   — pill only, no number (zero JS, zero third-party request)
     //   "build" — bake the count into the page at build time (zero runtime
     //             cost; refreshed whenever the site rebuilds)

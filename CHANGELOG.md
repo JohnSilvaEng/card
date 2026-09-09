@@ -9,6 +9,11 @@ often to `libcard.config.yaml`); everything else is picked up automatically by
 
 ## Unreleased
 
+- **Pair a site with its GitHub repo on one row.** A link can now carry a
+  `github:` repo URL. The row shows the site as the main button and a compact
+  GitHub pill (the mark + ★ star count, per the existing `stars` modes) to its
+  right — so "here's the app, here's the code" takes one line instead of two.
+  Existing `star: true` repo links are unchanged.
 - **Glass themes no longer flicker.** The frosted panels on Frost, Dusk, Dawn,
   and Mist could shimmer or flash intermittently — the drifting mesh background
   ran a live 60px blur and a scale/rotate animation that periodically forced the
