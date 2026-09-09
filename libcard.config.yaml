@@ -114,6 +114,8 @@ links:
 # party form POST, (3) live provider iframes (privacy-safe defaults), and
 # (4) build-time embeds (baked to static HTML, refreshed on rebuild).
 blocks:
+  - type: tweet # baked to static HTML at build time (no runtime JS)
+    url: https://x.com/becomingbabyman/status/1566619477508333568
   - type: divider
     label: Like this site?
   - type: heading
