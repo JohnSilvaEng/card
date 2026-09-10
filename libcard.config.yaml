@@ -42,6 +42,8 @@ socials:
     url: https://www.instagram.com/becomingbabyman/
   - platform: telegram
     url: https://t.me/becomingbabyman
+  - platform: substack
+    url: https://becomingbabyman.substack.com/
 
 # --- Your links (the buttons) ---
 # My pinned GitHub repos, in pinned order. A `github:` line pairs a live site

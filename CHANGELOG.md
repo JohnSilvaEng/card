@@ -9,6 +9,8 @@ often to `libcard.config.yaml`); everything else is picked up automatically by
 
 ## Unreleased
 
+- **Substack in the social row.** `platform: substack` now renders the
+  Substack mark with its brand-orange hover, alongside the other social icons.
 - **Pair a site with its GitHub repo on one row.** A link can now carry a
   `github:` repo URL. The row shows the site as the main button and a compact
   GitHub pill (the mark + star count, per the existing `stars` modes) to its
