@@ -28,6 +28,7 @@ Browse them live on the `/themes` page.
 | **Paper** (`paper`) | light | [@crs48](https://github.com/crs48) | MIT | ✅ |
 | **Sunset** (`sunset`) | dark | [@crs48](https://github.com/crs48) | MIT | ✅ |
 | **Terminal** (`terminal`) | dark | [@crs48](https://github.com/crs48) | MIT | ✅ |
+| **Silva** (`silva`) | dark | [John Silva](https://johnsilvaeng.github.io/) | MIT |  |
 
 <!-- THEMES:END -->
 

@@ -3,232 +3,90 @@
 # ┌─────────────────────────────────────────────────────────────────────┐
 # │  This is the ONLY file you need to edit to make LibCard your own.    │
 # │  Change the values below, commit, and push — GitHub Pages rebuilds.  │
-# │  The `$schema` line above gives you autocomplete + validation in     │
-# │  editors like VS Code (and tells AI agents exactly what's allowed).  │
 # │  To pull in new themes/features later: `pnpm run update` — it leaves │
 # │  this file untouched. Full guide: docs/UPGRADING.md                  │
 # └─────────────────────────────────────────────────────────────────────┘
+#
+# John Silva — digital business card. Intended for
+# https://johnsilvaeng.github.io/card/ as a companion to the engineering
+# portfolio at https://johnsilvaeng.github.io/.
 
 # --- Who you are (the card header) ---
 profile:
-  name: Christopher Smothers
-  tagline: Building xNet — a local-first platform for apps that work offline, sync peer-to-peer, and keep your data under your control
-  avatar: /avatar.jpg # a file in /public, or a full https:// URL
-  location: San Francisco, CA
+  name: John Silva
+  tagline: I make difficult welds possible
+  avatar: /john-silva.jpg # public/john-silva.jpg — the portfolio headshot
+  location: Kettering, Northants, UK
 
 # --- Contact details ---
-# These power the "Save contact" button (a downloadable vCard) and the QR
-# business card. Every field is optional — include only what you want to share.
+# These power the "Save contact" button (a downloadable vCard) and the QR card.
 contact:
-  email: chris.smothers@gmail.com
-  phone: "" # e.g. "+1-555-123-4567"
-  organization: xNet
-  title: Maintainer
-  website: https://xnet.fyi
+  email: john@cwt-group.com
+  # Company switchboard, extension 4. This string is never displayed — it only
+  # feeds the tel: link and the vCard, so it has to dial correctly:
+  #   - no "(0)": with +44 the trunk 0 must be dropped. A dialer that strips the
+  #     parens but keeps the 0 would try +4401536… and fail.
+  #   - ",,4": each comma is a ~2s pause, then DTMF 4. This is what actually
+  #     reaches the extension on iOS and Android; "Ext.4" as text does not dial.
+  #   - no spaces: they end up unencoded in the tel: URI, which RFC 3966 forbids.
+  #     Browsers tolerate it, but there is no reason to depend on that.
+  phone: "+441536412828,,4"
+  organization: CWT Group
+  title: Technical Director & Co-owner
+  website: https://cwt-group.com # the URL saved into the vCard
 
 # --- Social icon row (icon-only, shown above the links) ---
 socials:
-  - platform: github
-    url: https://github.com/crs48
   - platform: linkedin
-    url: https://www.linkedin.com/in/chrissmothers/
-  - platform: x
-    url: https://x.com/becomingbabyman
-  - platform: bluesky
-    url: https://bsky.app/profile/crs22.bsky.social
-  - platform: youtube
-    url: https://www.youtube.com/channel/UC3MAaU1oKalapO7rjZps7hQ
-  - platform: instagram
-    url: https://www.instagram.com/becomingbabyman/
-  - platform: telegram
-    url: https://t.me/becomingbabyman
-  - platform: substack
-    url: https://becomingbabyman.substack.com/
+    url: https://uk.linkedin.com/in/john-silva-mechanicaleng
 
 # --- Your links (the buttons) ---
-# My pinned GitHub repos, in pinned order. A `github:` line pairs a live site
-# with its source: the row shows the site as the main button and a small
-# GitHub pill (mark + star count) to its right.
 links:
-  - label: Nervous System Healing (resources)
-    url: https://crs48.github.io/nervous-system-healing
-    icon: heart
-  - label: xNet
-    url: https://xnet.fyi/
+  - label: Engineering portfolio
+    url: https://johnsilvaeng.github.io/
     icon: globe
-    github: https://github.com/crs48/xNet # show the repo + star count beside the site
-    stars: build # bake the star count in at build time (zero runtime JS)
-  - label: xnet.fyi/blog/a-great-pirate-age
-    url: https://xnet.fyi/blog/a-great-pirate-age/
+  - label: LinkedIn
+    url: https://uk.linkedin.com/in/john-silva-mechanicaleng
+    icon: linkedin
+  - label: CWT Group
+    url: https://cwt-group.com
     icon: globe
-  - label: xnet.fyi/blog/timeout
-    url: https://xnet.fyi/blog/timeout/
-    icon: heart
-  - label: LIBCard (this site)
-    url: https://crs48.github.io/LIBCard
-    icon: globe
-    github: https://github.com/crs48/LIBCard
-    stars: build
-  - label: murmuration (flocking)
-    url: https://crs48.github.io/murmuration
-    icon: globe
-    github: https://github.com/crs48/murmuration
-    stars: build
-  - label: warp-voyage (tunnel game)
-    url: https://crs48.github.io/warp-voyage
-    icon: globe
-    github: https://github.com/crs48/warp-voyage
-    stars: build
-  - label: cause (Clojure EDN CRDT)
-    url: https://github.com/crs48/cause
-    icon: github
-    star: true # add a "★ Star" sub-button that opens the repo
-    stars: build
-  - label: dome home explorations
-    url: https://crs48.github.io/dome
-    icon: globe
-    github: https://github.com/crs48/dome
-    stars: build
-  - label: food forest explorations
-    url: https://crs48.github.io/food-forests
-    icon: globe
-    github: https://github.com/crs48/food-forests
-    stars: build
-  - label: floor life explorations
-    url: https://crs48.github.io/floor-life
-    icon: globe
-    github: https://github.com/crs48/floor-life
-    stars: build
-  - label: how ai works for ludites
-    url: https://crs48.github.io/ai-explained
-    icon: globe
-    github: https://github.com/crs48/ai-explained
-    stars: build
-  - label: EU mixed-use courtyard buildings for the US
-    url: https://crs48.github.io/courtyardblock
-    icon: globe
-    github: https://github.com/crs48/courtyardblock
-    stars: build
-  - label: wealthglobe (net worth as land)
-    url: https://crs48.github.io/wealthglobe/
-    icon: globe
-    github: https://github.com/crs48/wealthglobe
-    stars: build
+
 # --- Rich content blocks (optional, ordered) ---
-# An ordered list of typed blocks rendered between your links and the social row.
-# Every block is validated data — never raw HTML — so it stays safe and simple.
-# Four tiers, all with ZERO of our JavaScript: (1) static HTML/CSS, (2) third-
-# party form POST, (3) live provider iframes (privacy-safe defaults), and
-# (4) build-time embeds (baked to static HTML, refreshed on rebuild).
+# Kept to one: tap-to-call and tap-to-email, which is what a card is for.
 blocks:
-  - type: tweet # baked to static HTML at build time (no runtime JS)
-    url: https://x.com/becomingbabyman/status/1566619477508333568
-  - type: divider
-    label: Like this site?
-  - type: heading
-    text: Thanks! Want to build your own?
-  - type: text
-    markdown: >
-      I made LIBCard as a free, fast, **zero-JavaScript** link-in-bio page and virtual business
-      card you host yourself on GitHub Pages. Edit one file, save, done.
-      Grab the code at [github.com/crs48/LIBCard](https://github.com/crs48/LIBCard).
-  - type: faq
-    items:
-      - q: Is it really free?
-        a: Yes — it runs on GitHub Pages with no server and no subscription.
-      - q: Can I use my own domain?
-        a: Yes. Add a CNAME and set site.base to "/".
-      - q: Can I embed content?
-        a: Yup. Video, maps, music, forms, and more.
-  - type: divider
-    label: Contact Me
   - type: contact-buttons
-    call: true # uses contact.phone above; or set a number string
+    call: true # uses contact.phone above
     email: true # uses contact.email above
-  # --- More block types you can add (uncomment and edit) ---
-  # - { type: booking, provider: calcom, url: https://cal.com/you/30min, title: Book a call }
-  # - { type: video, provider: youtube, id: dQw4w9WgXcQ, title: My talk }   # click-to-load facade
-  # - { type: embed, provider: spotify, url: https://open.spotify.com/track/ID }
-  # - { type: embed, provider: figma, url: https://www.figma.com/design/KEY/Title }
-  # - { type: map, provider: gmaps, src: "https://www.google.com/maps/embed?pb=..." }
-  # - { type: signup, provider: buttondown, username: you, title: Newsletter }
-  # - { type: tweet, url: https://x.com/you/status/1750000000000000000 }     # baked at build time
-  # - { type: rss, url: https://yourblog.com/feed.xml, title: Latest posts }
-  # - { type: github, user: you, repo: yourrepo }
 
 # --- Look & feel ---
-# Pick ONE theme (zero JavaScript):
-#
-#   theme: midnight        # default | midnight | sunset | mono | paper | terminal
-#
-# ...or turn on the live theme switcher / random mode so visitors can see the
-# themes on the page (these are the only features that ship a little JavaScript):
 theme:
-  name: default # the default everyone sees first (and crawlers/no-JS visitors)
-  switcher: true # show the "Try a theme" button (cycles through ALL themes)
-  # Random mode: `true` randomizes over every theme; an array curates the pool —
-  # only these land on a random reload, while the switcher still rotates through
-  # all of them. Here: my hand-picked set for the page's first impression.
-  random: [default, paper, frost, dusk, dawn, mist]
-  animate: true # animate the change with a circular reveal
-  # allow: [midnight, sunset, terminal, paper] # optional subset; omit = all themes
+  name: silva # custom theme in themes/silva.yaml — matches the portfolio
+  switcher: false # off: a personal card should not offer to restyle itself (also keeps it zero-JS)
+  animate: false
 
 # --- Footer credit ---
-# "Powered by LibCard · Theme by <author>". Both default on.
 footer:
-  poweredBy: true # set false to drop "Powered by LibCard" (it's MIT)
-  themeCredit: true # "Theme by <author>" — required for CC-BY themes regardless
-
-# --- First-run nudge (template only, off by default) ---
-# A fresh "Use this template" card can show a subtle "edit libcard.config.yaml"
-# banner until it's customized. Uncomment to switch it on, then delete it once the
-# card is yours — a real, customized card should never show the nudge.
-# meta:
-#   default: true
+  poweredBy: true # LibCard is MIT — the credit stays
+  themeCredit: false # the theme is John's own (MIT), so the credit would be redundant
 
 # --- SEO / link previews (optional) ---
 seo:
-  description: Building xNet — a local-first platform for apps that work offline, sync peer-to-peer, and keep your data under your control
-  # ogImage: /og.png   # optional custom Open Graph image (a /public path or URL)
+  description: John Silva — Technical Director and co-owner at CWT Group. Laser welding, weld metallurgy and AS9100D quality systems.
 
 # --- Landscape "card mode" (rotate your phone to flash a business card) ---
-# Turn the phone sideways and the page flips into a pretty, physical-looking
-# business card — your name beside a QR code — so you can flash it at someone and
-# rotate back to the full page. The reveal is pure CSS (zero JavaScript); the only
-# script is the optional screen wake lock, shipped solely when `wakeLock: true`.
-# Omit this whole block to accept the defaults below.
 cardMode:
-  enabled: true # show the landscape card overlay (and a portrait "rotate" hint)
-  qr: page # what the QR encodes: page (your link-in-bio) | contact (save offline) | both
+  enabled: true # landscape business-card overlay + portrait rotate hint
+  qr: page # scan -> opens this card, which carries the Save-contact button
   hint: true # the subtle "⟲ Rotate to show your card" nudge in portrait
-  wakeLock: false # opt-in: keep the screen lit while the card shows (ships a tiny script)
+  wakeLock: true # keep the screen lit while you hold the card up to someone
 
-# --- Analytics (optional, OFF by default) ---
-# Privacy-first and cookieless — no consent banner, no per-person tracking.
-# OMIT this whole block and the page ships ZERO analytics — and, if nothing else
-# opts into JS, stays zero-JS. Two honesty tiers, just like the `stars` modes:
-#   • GoatCounter `mode: pixel` — a single <img>. ZERO JavaScript. Counts
-#     pageviews + referrers, but cannot see outbound link clicks.
-#   • umami / plausible / cloudflare (or goatcounter `mode: script`) — a small
-#     (~1–2 KB) cookieless beacon that ALSO tracks which links people click.
-# The provider id/domain/token are public (no secrets), so they live right here.
-analytics:
-  provider: goatcounter # cookieless, no consent banner; pixel mode ships zero JS
-  code: libcard # -> libcard.goatcounter.com
-  mode: pixel # zero-JS <img> beacon: pageviews + referrers (no outbound clicks)
-  # --- or a beacon that ALSO tracks outbound link clicks (swap in one) ---
-  # provider: umami
-  # websiteId: 00000000-0000-0000-0000-000000000000
-  # outboundClicks: true        # auto-tag external links as "outbound" events
-  # provider: plausible
-  # domain: crs48.github.io      # the domain registered in Plausible
-  # provider: cloudflare
-  # token: your-web-analytics-token   # note: Cloudflare can't track outbound clicks
+# --- Analytics ---
+# Deliberately omitted. `getAnalytics()` returns null when this block is absent,
+# so the page ships no beacon, no pixel, no cookies and no third-party request.
 
-# --- Where this site lives (the setup wizard fills these in) ---
-# url:  your GitHub Pages origin, e.g. https://you.github.io
-# base: the sub-path. "/repo-name" for project pages, "/" for a user site or
-#       a custom domain. Getting `base` wrong is the #1 cause of broken assets.
+# --- Where this site lives ---
+# base: "/repo-name" for project pages. Getting it wrong breaks every asset.
 site:
-  url: https://crs.land
-  base: /
+  url: https://johnsilvaeng.github.io
+  base: /card

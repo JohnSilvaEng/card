@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=./theme.schema.json
+#
+# CUSTOM THEME — not part of upstream LibCard.
+# `pnpm run update` preserves themes you authored yourself, so this file
+# survives engine updates untouched.
+#
+# Every value is lifted from the design tokens of johnsilvaeng.github.io
+# (assets/css/site.css, :root) so the card reads as the same identity.
+name: Silva
+slug: silva
+author: John Silva
+authorUrl: https://johnsilvaeng.github.io/
+license: MIT
+official: false
+mode: dark
+tags: [dark, engineering, cyan, grid, restrained]
+description: The palette of the John Silva engineering portfolio — graphite, a laser-cyan accent and a faint technical grid.
+tokens:
+  bg: "#090b0f" # portfolio --bg
+  surface: "#141821" # portfolio --panel
+  fg: "#e8ecf3" # portfolio --fg
+  muted: "#98a2b3" # portfolio --fg-muted
+  accent: "#4fd1e0" # portfolio --laser
+  accentContrast: "#04222a" # portfolio --accent-contrast
+  border: "#242a36" # portfolio --line, rgba(255,255,255,.085), flattened to opaque
+  font: sans # see note below
+  radius: 0.875rem # portfolio --radius: 14px
+# The portfolio hero sits on a 56px technical grid at rgba(255,255,255,0.028).
+pattern:
+  kind: grid
+  intensity: 0.03
+  size: 56px
+  maskFade: true
+# Flat and restrained, like the portfolio. Deliberately not `glass`.
+buttons:
+  fill: solid
+#
+# KNOWN DEVIATION — typography.
+# The portfolio uses Space Grotesk / Inter / JetBrains Mono from Google Fonts.
+# LibCard restricts `font` to four network-free system stacks by design, so a
+# webfont cannot be set through the supported theming mechanism. Overriding it
+# would mean a third-party request on every visit, which the brief rules out.
+# The card therefore uses the system sans stack: same colour, spacing, shape
+# and hierarchy as the portfolio, different letterforms.

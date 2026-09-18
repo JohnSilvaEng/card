@@ -184,3 +184,26 @@
   --lc-font: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
   --lc-radius: 0.125rem;
 }
+
+[data-theme="silva"] {
+  color-scheme: dark;
+  --lc-bg: #090b0f;
+  --lc-surface: #141821;
+  --lc-fg: #e8ecf3;
+  --lc-muted: #98a2b3;
+  --lc-accent: #4fd1e0;
+  --lc-accent-contrast: #04222a;
+  --lc-border: #242a36;
+  --lc-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --lc-radius: 0.875rem;
+  --lc-ink: color-mix(in oklab, var(--lc-fg) 3%, transparent);
+  --lc-pat-size: 56px;
+}
+
+[data-theme="silva"] .lc-pattern {
+  --s: var(--lc-pat-size, 32px);
+  background-image:
+    linear-gradient(var(--lc-ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--lc-ink) 1px, transparent 1px);
+  background-size: var(--s) var(--s);
+}

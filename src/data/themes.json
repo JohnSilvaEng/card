@@ -421,5 +421,46 @@
       "fill": "solid",
       "glassFillOpacity": 0.18
     }
+  },
+  {
+    "slug": "silva",
+    "name": "Silva",
+    "file": "silva.yaml",
+    "author": "John Silva",
+    "authorUrl": "https://johnsilvaeng.github.io/",
+    "license": "MIT",
+    "official": false,
+    "mode": "dark",
+    "tags": [
+      "dark",
+      "engineering",
+      "cyan",
+      "grid",
+      "restrained"
+    ],
+    "description": "The palette of the John Silva engineering portfolio — graphite, a laser-cyan accent and a faint technical grid.",
+    "preview": "themes/.previews/silva.png",
+    "tokens": {
+      "bg": "#090b0f",
+      "surface": "#141821",
+      "fg": "#e8ecf3",
+      "muted": "#98a2b3",
+      "accent": "#4fd1e0",
+      "accentContrast": "#04222a",
+      "border": "#242a36",
+      "font": "sans",
+      "radius": "0.875rem"
+    },
+    "background": null,
+    "pattern": {
+      "kind": "grid",
+      "intensity": 0.03,
+      "size": "56px",
+      "maskFade": true
+    },
+    "buttons": {
+      "fill": "solid",
+      "glassFillOpacity": 0.18
+    }
   }
 ]
