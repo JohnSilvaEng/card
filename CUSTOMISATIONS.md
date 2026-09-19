@@ -31,10 +31,33 @@ These show as modified in `git status` only because adding `themes/silva.yaml`
 regenerates them. `prebuild` rebuilds them on every build and `update.mjs`
 explicitly skips them.
 
+## One engine edit — reapply after `pnpm run update`
+
+`src/components/blocks/ContactButtons.astro`, one line:
+
+```diff
+-    <div class="grid w-full grid-cols-2 gap-2 sm:grid-cols-3">
++    <div class={`grid w-full grid-cols-2 gap-2${buttons.length > 2 ? " sm:grid-cols-3" : ""}`}>
+```
+
+Upstream always switches that row to three columns at `sm`. With only two
+buttons — Call and Email, which is what this card has — the third column stays
+empty and the pair stops two-thirds of the way across, visibly narrower than
+the full-width link buttons directly above. Making the third column conditional
+on there actually being a third button leaves upstream's behaviour intact for
+anyone with SMS/WhatsApp/Telegram/Signal configured.
+
+There is no config or theme hook for this: `blocks.contact-buttons` accepts only
+`call`/`sms`/`whatsapp`/`telegram`/`signal`/`email`, and themes are limited to
+design tokens. `src/` is in `update.mjs`'s `ENGINE_DIRS`, so **this edit is
+overwritten by `pnpm run update`** — reapply it, or drop it if the change has
+landed upstream by then.
+
 ## Everything else
 
-Untouched upstream: `src/**`, `scripts/**`, `astro.config.mjs`, `package.json`,
-`docs/**`. No component was rewritten or replaced.
+Untouched upstream: `scripts/**`, `astro.config.mjs`, `package.json`, `docs/**`,
+and all of `src/**` apart from the single line above. No component was rewritten
+or replaced.
 
 ## Updating LibCard later
 

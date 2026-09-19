@@ -36,9 +36,10 @@ contact:
   website: https://cwt-group.com # the URL saved into the vCard
 
 # --- Social icon row (icon-only, shown above the links) ---
-socials:
-  - platform: linkedin
-    url: https://uk.linkedin.com/in/john-silva-mechanicaleng
+# Deliberately empty. The only profile worth linking is LinkedIn, and there is
+# already a full-width LinkedIn button in `links:` below — the small circular
+# icon above it was the same destination twice. `socials` defaults to [], so
+# omitting it renders no row at all.
 
 # --- Your links (the buttons) ---
 links:
