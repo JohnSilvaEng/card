@@ -15,7 +15,10 @@
 profile:
   name: John Silva
   tagline: I make difficult welds possible
-  avatar: /john-silva.jpg # public/john-silva.jpg — the portfolio headshot
+  # Square crop of the same original as the portfolio headshot. The avatar is
+  # rendered in a circle (object-cover), so a square source is what actually
+  # gets shown — a portrait-aspect file just has its top and bottom discarded.
+  avatar: /john-silva-avatar.jpg # public/john-silva-avatar.jpg
   location: Kettering, Northants, UK
 
 # --- Contact details ---

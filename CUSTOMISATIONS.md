@@ -14,7 +14,7 @@ can replace the engine underneath without conflicts.
 |---|---|
 | `libcard.config.yaml` | All content: profile, contact, socials, links, card mode, base path. `update.mjs` never touches it. |
 | `themes/silva.yaml` | Custom theme matching johnsilvaeng.github.io. Themes you author yourself are preserved by `update.mjs`. |
-| `public/john-silva.jpg` | Headshot, copied from the portfolio. `public/` is never touched by `update.mjs`. |
+| `public/john-silva-avatar.jpg` | Avatar: a 346×346 crop of the same original as the portfolio headshot, cut square because the avatar renders in a circle. `public/` is never touched by `update.mjs`. |
 | `mise.toml` | Pins Node 22 + pnpm 10.11.1 for this directory only. Not an upstream file. |
 | `CUSTOMISATIONS.md` | This file. |
 
